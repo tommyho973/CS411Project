@@ -2,6 +2,9 @@ from flask import Flask, jsonify, request
 import random
 from googleapiclient.discovery import build
 import requests
+from flask_cors import CORS
+from google.cloud import translate
+import os
 
 
 app = Flask(__name__)
@@ -71,6 +74,8 @@ def get_word_info():
         'translated_word': translated_word,
         'translated_definition': translated_definition
     })
+
+
 
 
 if __name__ == '__main__':
