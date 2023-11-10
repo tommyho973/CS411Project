@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "trip-scheduler-404017",
+  "private_key_id": "e671d9f2fd511a5c25051a99c9f9c16f673259ed",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCuGzq+Vjv5HCm+\nnbH7RamHGqX7AbGqEyduzg6gvGyUZ7HoucS8sWis9sl3/UAyg1iQXl1br4SQkOeC\nmK1XSOjltT/PgxJHCOUzr1OAmetBVDa7tRe0X7Npl2whEnSMcp2hRiW9Af12OMRI\nrO+JWYEWX3Ld8hOkJoJ+LXC9ZQQLTT+tQxjpOtK8lGCXPKzqmnL6rXmPbAR4DWG5\nBh8ZC8jLUHWvAbtglKjT9Ix64I5hcNbVQKsLw13PBAqdrKUB1jfVQrxIiZULfyaR\n4tCrQ71i8GnFezQUrjSWtqJLjIxspPzTS6bTYtlrdeew2Whj9OrfrjaPJ4WnKDtD\n0lnVsp1RAgMBAAECggEACM8v5bmPR0d5hT+NZd1ceo2KoGyxhJ17fUvHybI+/DNS\n+SeNIM8JMNc70mpp+SRUMtnTd3QmDPqH/D+lZak2v4iwNdu37QgyMK9KVlNzZ9bO\n/ihnjqTY+xrCSdoZM5IJD8Pw3ONg475zkAnQBO8WbP9fXIOHIuMf7yp1bd/SmI+2\nr45A1gyNQNPrsP0/TI9lOO1fdd0ah+2bRdCeXQGimqN/qgrHZpGgyJOOciCr23R0\nwpccUAav6AptMr7bOIHyEtn5T+zWJUT8zOUgwcDy7MJQcs40sJXy1ds3r9Mtzi/e\nMLi6KLoLlmWdv1/Fu7Pd37P/DrKcDzfD8ENKTAsAwQKBgQDVHjpzQ/BTsNzY7l+/\nxYGKyMY8kPSdsm7i0u3IjHqWAWFc/Hn3RfU0C0EeoUet0tqk1YYEs/29wyf7XVZZ\nOHcUT2hNU1QdQR2VOI9b5Uu8sVzpy8LKZC+u55hh92CwysfYzfexm2G2Miu2SzzJ\nfhuYUwAutN9bzv+ivkt+Fm4y1QKBgQDRI38yvx+gSlBZRLzJzTA9F3RVI8nSdyv9\njcj2E4PzJ1b8eiOaAJqQtxKd5MhHsDjrWyVFwNfZlRkbg1f/QHsKcrQg/f+Ta6UJ\nVDx6G/5vbE7aD3DPEi6WENni1aYE6CRyGmkLCB+vYzHJQL8fF8B/DP+mrf50by2a\nED15SiEmjQKBgQDJ8dPnJ2iSlVQgR3j5iljfPrMB70WsLMmAK+lgESWUAQjWiPO1\nyVe5kjSJpr/6SYQfj6lnyXrWlxfKy74n2yaTW091flGFSw+SN784kAV9bv+hFxCk\nodzBOvmdU0EPJYfLvBhK9vbXI6FiItceA154r6XLnF7Oa063UuTMPMr9ZQKBgBSy\npKYLEEA22pjbGqwGKJ4DMjoy3oh7zti7LYZdDBQGcq9uDxPwt1tXIvqJZ+DgaeGx\nFZE/sp0QCnoUl6LlaMfx7i3NtXuLjbvMoGedWaMBXxRprspvjDjB1i6C4nld2C2K\nu5ah6TDcalL2m3OiUCTCzpJaafJwBl1W+h6E3Z8JAoGAJFoQKlkADmffeL42e75Z\nRX/0wMEBs+dcYRx4Akf3SBHdjLcfvZr/ShlcNsaPMoi5MDCptCr1HHnLM/5hBOaK\nTGhCqHkM5xnHPZufXcfC1xZudGx/keuBbcaBpjp8xhJEXTLWUXei1O8I3OZ86Y5m\n0XnLkVl5xoJ+2e3DM7BFjlo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "cs411team41@trip-scheduler-404017.iam.gserviceaccount.com",
+  "client_id": "101859903904345973880",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cs411team41%40trip-scheduler-404017.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
