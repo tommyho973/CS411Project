@@ -4,11 +4,12 @@ from googleapiclient.discovery import build
 import requests
 from flask_cors import CORS
 from google.cloud import translate
+from dotenv import load_dotenv
 import os
 
-
+load_dotenv("api_keys.env")  # access the env file where we store the private info
 app = Flask(__name__)
-api_key = 'AIzaSyB6IXFccYO5RMvA_fusLvE32T1a8GkbuXk'  # key for Google Translate API
+api_key = os.environ.get("GOOGLE_API_KEY")  # key for Google Translate API
 service = build('translate', 'v2', developerKey=api_key)
 
 # open the file and parse it, store all the words in the file in an array
@@ -74,8 +75,6 @@ def get_word_info():
         'translated_word': translated_word,
         'translated_definition': translated_definition
     })
-
-
 
 
 if __name__ == '__main__':
