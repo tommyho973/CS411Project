@@ -4,12 +4,13 @@ from googleapiclient.discovery import build
 import requests
 from flask_cors import CORS
 from google.cloud import translate
+from dotenv import load_dotenv
 import os
 from pymongo import MongoClient
 from bson import ObjectId  # Import ObjectId from the `bson` module
 
 app = Flask(__name__)
-api_key = 'AIzaSyB6IXFccYO5RMvA_fusLvE32T1a8GkbuXk'  # key for Google Translate API
+api_key = os.environ.get("GOOGLE_API_KEY")  # key for Google Translate API
 service = build('translate', 'v2', developerKey=api_key)
 
 # Connect to MongoDB
