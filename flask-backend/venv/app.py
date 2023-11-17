@@ -9,6 +9,7 @@ import os
 from pymongo import MongoClient
 from bson import ObjectId  # Import ObjectId from the `bson` module
 
+load_dotenv("api_keys.env")  # access the env file where we store the private info
 app = Flask(__name__)
 api_key = os.environ.get("GOOGLE_API_KEY")  # key for Google Translate API
 service = build('translate', 'v2', developerKey=api_key)
