@@ -6,11 +6,18 @@ from flask_cors import CORS
 from google.cloud import translate
 from dotenv import load_dotenv
 import os
+from pymongo import MongoClient
+from bson import ObjectId  # Import ObjectId from the `bson` module
 
 load_dotenv("api_keys.env")  # access the env file where we store the private info
 app = Flask(__name__)
 api_key = os.environ.get("GOOGLE_API_KEY")  # key for Google Translate API
 service = build('translate', 'v2', developerKey=api_key)
+
+# Connect to MongoDB
+client = MongoClient('mongodb+srv://senacs411:EBIuHS9jfhcp2nzR@cluster0.mnf9keq.mongodb.net/')
+db = client['senacs411']  # name for MongoDB database
+flashcards_collection = db['flashcards']  # Creating a flashcards_collection for flashcards in the database
 
 # open the file and parse it, store all the words in the file in an array
 file_path = '1-1000.txt'
@@ -68,13 +75,27 @@ def get_word_info():
     translated_word = translated_word_response['data']['translations'][0]['translatedText']
     translated_definition = translated_definition_response['data']['translations'][0]['translatedText']
 
-    # return the original and translated word and definition in JSON format
-    return jsonify({
+    # Insert the flashcard data into MongoDB
+    flashcard_data = {
         'original_word': random_word,
         'original_definition': first_definition,
         'translated_word': translated_word,
         'translated_definition': translated_definition
-    })
+    }
+
+
+    insert_result = flashcards_collection.insert_one(flashcard_data)
+
+    # Convert ObjectId to string before returning JSON
+    flashcard_data['_id'] = str(insert_result.inserted_id)
+
+
+    # Check if the insertion was successful. If t is successful returns flashcard_data in JSON format
+    if insert_result.inserted_id:
+        return jsonify(flashcard_data), 200
+    else:
+        return jsonify({'error': 'Failed to insert flashcard into MongoDB'}), 500
+
 
 
 if __name__ == '__main__':
