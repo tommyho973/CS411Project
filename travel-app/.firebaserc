@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "languagelogin-53aef": {
+      "hosting": {
+        "travel-app": [
+          "languagelogin-53aef"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "languagelogin-53aef"
+  }
+}

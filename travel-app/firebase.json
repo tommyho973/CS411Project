@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "travel-app",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
