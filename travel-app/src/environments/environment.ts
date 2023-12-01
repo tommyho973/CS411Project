@@ -6,7 +6,6 @@ export const environment = {
         projectId: "languagelogin-53aef",
         storageBucket: "languagelogin-53aef.appspot.com",
         messagingSenderId: "393887629758",
-        appId: "1:393887629758:web:adc0ece906532bdead39ef",
-        measurementId: "G-WQ7Z1QYJ8J"
+        appId: "1:393887629758:web:adc0ece906532bdead39ef"
     }
   };

@@ -322,7 +322,7 @@
     <option value="es">Spanish</option>
     <!-- Add more language options as needed -->
   </select>
-
+  <button (click)="navigateToRegistration()">Go to Registration</button>
   <!-- Button to trigger fetching flashcard data -->
   <button onclick="fetchFlashcard()">Get Flashcard</button>
 
@@ -353,8 +353,7 @@
       // Check if there is data to display
       if (data) {
         // Clear previous content in the flashcard container
-        flashcardContainer.innerHTML = '';
-
+        
         // Create and append flashcard content
         const originalWord = document.createElement('div');
         originalWord.innerText = `Original Word: ${data.original_word}`;
