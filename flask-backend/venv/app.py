@@ -18,6 +18,7 @@ service = build('translate', 'v2', developerKey=api_key)
 client = MongoClient('mongodb+srv://senacs411:EBIuHS9jfhcp2nzR@cluster0.mnf9keq.mongodb.net/')
 db = client['senacs411']  # name for MongoDB database
 flashcards_collection = db['flashcards']  # Creating a flashcards_collection for flashcards in the database
+users_collection = db['users']
 
 # open the file and parse it, store all the words in the file in an array
 file_path = '1-1000.txt'
@@ -96,7 +97,30 @@ def get_word_info():
     else:
         return jsonify({'error': 'Failed to insert flashcard into MongoDB'}), 500
 
+@app.route("/api/register", methods=["POST"])
+def register_user():
+    data = request.json
 
+    # Extract user data from the request
+    display_name = data.get("displayName")
+    email = data.get("email")
+    password = data.get("password")
+
+    # Perform user registration logic (e.g., create user in MongoDB)
+    user_data = {
+        "displayName": display_name,
+        "email": email,
+        "password": password,  # Note: In a real application, hash the password before storing
+    }
+
+    # Insert user data into MongoDB
+    result = users_collection.insert_one(user_data)
+
+    # Return a response based on the registration result
+    if result.inserted_id:
+        return jsonify({"message": "User registered successfully"}), 200
+    else:
+        return jsonify({"error": "Failed to register user"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
