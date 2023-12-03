@@ -11,6 +11,7 @@ from bson import ObjectId  # Import ObjectId from the `bson` module
 
 load_dotenv("api_keys.env")  # access the env file where we store the private info
 app = Flask(__name__)
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:4200"}})
 api_key = os.environ.get("GOOGLE_API_KEY")  # key for Google Translate API
 service = build('translate', 'v2', developerKey=api_key)
 
@@ -98,6 +99,12 @@ def get_word_info():
         return jsonify({'error': 'Failed to insert flashcard into MongoDB'}), 500
 
 @app.route("/api/register", methods=["POST"])
+def handle_options():
+    return '', 200, {
+        'Access-Control-Allow-Origin': 'http://localhost:4200',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': 'POST',
+    }
 def register_user():
     data = request.json
 
