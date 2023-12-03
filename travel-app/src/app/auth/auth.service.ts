@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = 'http://localhost:5000';
+    private apiUrl = 'http://127.0.0.1:5000';
     user$: Observable<firebase.default.User | null>;
   
     constructor(private afAuth: AngularFireAuth,private http: HttpClient) {
@@ -25,7 +25,7 @@ export class AuthService {
       }
     sendUserInfoToMongoDB(uid: string, displayName: string, email: string): Observable<any> {
         const user = { uid, displayName, email };
-        return this.http.post(`${this.apiUrl}/api/register`, user);
+        return this.http.post('http://127.0.0.1:5000/api/register', user);
     }
     logout() {
       this.afAuth.signOut();

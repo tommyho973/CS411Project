@@ -1,35 +1,25 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
-    template: `
-      <div>
-        <h2>Login</h2>
-        <form (ngSubmit)="login()">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name = "email" [(ngModel)]="email" required>
-  
-          <label for="password">Password:</label>
-          <input type="password" id="password" name = "password" [(ngModel)]="password" required>
-  
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    `,
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
   })
   export class LoginComponent {
     email: string = '';
     password: string = '';
   
-    constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService, private router:Router) {}
   
     login() {
       this.authService.loginWithEmailPassword(this.email, this.password)
         .then(() => {
           // Handle successful login, e.g., navigate to a different page
           console.log("Success");
+          this.router.navigate(['/account']);
         })
         .catch(error => {
           // Handle login error (display error message, etc.)

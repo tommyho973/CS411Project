@@ -1,29 +1,17 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-register',
-    template: `
-      <div>
-        <h2>Register</h2>
-        <form (submit)="register()">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name = "email" [(ngModel)]="email" required>
-  
-          <label for="password">Password:</label>
-          <input type="password" id="password" name = "password" [(ngModel)]="password" required>
-  
-          <button type="submit">Register</button>
-        </form>
-      </div>
-    `,
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css'],
   })
   export class RegisterComponent {
     email: string = '';
     password: string = '';
   
-    constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService, private router:Router) {}
     register() {
         this.authService.registerWithEmailPassword(this.email, this.password)
           .then((userCredential) => {
@@ -44,6 +32,7 @@ import { FormsModule } from '@angular/forms';
                     console.error('Failed to send user information to MongoDB:', error);
                   }
                 );
+                this.router.navigate(['/login']);
             } else {
               console.error('User is undefined after registration.');
             }
