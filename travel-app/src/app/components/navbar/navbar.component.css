@@ -1,0 +1,38 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #b8b8b8;
+    padding: 1.5vh 1vw;
+}
+  
+.navbar .nav {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-brand {
+    margin-left: 5vw;
+    font-size: 20px;
+}
+  
+.navbar .nav-item {
+    padding: 0 1rem;
+}
+  
+.navbar .nav-link, .navbar-brand{
+    color: black;
+    text-decoration: none;
+}
+
+.nav-link {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 0.5vh 2vw;
+}
+  
+.navbar .nav-link:hover, .navbar .nav-link.active {
+}
+  

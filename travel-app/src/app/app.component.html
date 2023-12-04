@@ -148,6 +148,22 @@
     margin-left: 60px;
   }
 
+  #selection-menu {
+    margin-top: 5vh;
+    text-align: center;
+  }
+
+  #language-selection {
+    display: inline;
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+
+  button {
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+
   svg#rocket {
     width: 80px;
     position: absolute;
@@ -275,8 +291,12 @@
     /* Basic styling for the flashcard */
     .flashcard {
       border: 1px solid #ccc;
-      padding: 20px;
+      border-radius: 10px;
+      padding: 50px;
       margin: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 700px;
       text-align: center;
     }
  
@@ -312,19 +332,25 @@
 </style>
 
 <body>
+  <app-navbar></app-navbar>
+  <router-outlet></router-outlet>
 
-  <h1>Flashcard App</h1>
+  <!-- <h1>Flashcard App</h1> -->
 
-  <!-- Input for desired language -->
-  <label for="language">Select Language:</label>
-  <select id="language">
-    <option value="en">English</option>
-    <option value="es">Spanish</option>
-    <!-- Add more language options as needed -->
-  </select>
-  <button (click)="navigateToRegistration()">Go to Registration</button>
-  <!-- Button to trigger fetching flashcard data -->
-  <button onclick="fetchFlashcard()">Get Flashcard</button>
+  <div id="selection-menu">
+    <!-- Input for desired language -->
+    <div id="language-selection">
+      <label class="menu-items" for="language" style="margin-right: 1vw;">Select Language:</label>
+      <select class="menu-items" id="language">
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <!-- Add more language options as needed -->
+      </select>
+    </div>
+    <button class="menu-items" (click)="navigateToRegistration()">Go to Registration</button>
+    <!-- Button to trigger fetching flashcard data -->
+    <button class="menu-items" onclick="fetchFlashcard()">Create Flashcard</button>
+  </div>
 
   <!-- Container to display flashcard -->
   <div id="flashcard" class="flashcard">
