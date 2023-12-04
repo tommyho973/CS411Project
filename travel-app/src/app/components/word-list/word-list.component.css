@@ -1,0 +1,45 @@
+.terms-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+.term-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+  
+.term-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.term-title, .term-description {
+    margin: 0;
+}
+  
+.term-title {
+    font-weight: 600;
+    color: #333;
+}
+  
+.term-description {
+    color: #666;
+    text-align: right;
+}
+  
+.term-card:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+  

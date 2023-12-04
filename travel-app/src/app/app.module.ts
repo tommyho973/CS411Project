@@ -18,6 +18,11 @@ import { AuthGuard } from './auth/auth.guard';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { HttpClientModule } from '@angular/common/http';
+import { CardComponent } from './components/card/card.component';
+import { WordListComponent } from './components/word-list/word-list.component';
+import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 const firebaseConfig = {
   apiKey: "AIzaSyAA9BqT2s9cE8ExpBeXNhb7rfexg2i-rNw",
   authDomain: "languagelogin-53aef.firebaseapp.com",
@@ -27,13 +32,16 @@ const firebaseConfig = {
   appId: "1:393887629758:web:adc0ece906532bdead39ef",
   measurementId: "G-WQ7Z1QYJ8J"
 };
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    AccountComponent
+    AccountComponent,
+    CardComponent,
+    WordListComponent
   ],
   imports: [
     HttpClientModule,
@@ -44,7 +52,9 @@ const firebaseConfig = {
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     FormsModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatCardModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,
