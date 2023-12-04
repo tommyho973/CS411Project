@@ -22,6 +22,7 @@ import { CardComponent } from './components/card/card.component';
 import { WordListComponent } from './components/word-list/word-list.component';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAA9BqT2s9cE8ExpBeXNhb7rfexg2i-rNw",
@@ -41,7 +42,8 @@ const firebaseConfig = {
     LogoutComponent,
     AccountComponent,
     CardComponent,
-    WordListComponent
+    WordListComponent,
+    NavbarComponent
   ],
   imports: [
     HttpClientModule,
