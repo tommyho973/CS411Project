@@ -45,7 +45,7 @@ def translate_text(text, target_language, google_translate_api_key):
 
 
 @app.route('/api/word-info', methods=['GET'])  # our api endpoint
-def get_word_info():
+def get_word_info(user_id=None):
     # select a random word from the list
     random_word = random.choice(words)
 
@@ -79,6 +79,7 @@ def get_word_info():
 
     # Insert the flashcard data into MongoDB
     flashcard_data = {
+        'user_id': user_id,  # Pass user_id to associate the flashcard with the user
         'original_word': random_word,
         'original_definition': first_definition,
         'translated_word': translated_word,
@@ -105,6 +106,7 @@ def handle_options():
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Access-Control-Allow-Methods': 'POST',
     }
+    
 def register_user():
     data = request.json
 
@@ -118,16 +120,31 @@ def register_user():
         "displayName": display_name,
         "email": email,
         "password": password,  # Note: In a real application, hash the password before storing
+        "flashcards": []  # An empty array for flashcard references
     }
 
     # Insert user data into MongoDB
-    result = users_collection.insert_one(user_data)
+    result = users_collection.insert_one(user_data) 
 
     # Return a response based on the registration result
     if result.inserted_id:
+        user_id = result.inserted_id
         return jsonify({"message": "User registered successfully"}), 200
     else:
         return jsonify({"error": "Failed to register user"}), 500
+
+
+#Function to retrieve all flashcards for a specific user    
+def get_user_flashcards(user_id):
+    flashcards = flashcards_collection.find({'user_id': user_id})
+    return list(flashcards)
+
+#Endpoint to retrieve all flashcards for a user
+@app.route('/api/user-flashcards/<user_id>', methods=['GET'])
+def get_user_flashcards_endpoint(user_id):
+    user_flashcards = get_user_flashcards(user_id)
+    return jsonify(user_flashcards), 200
+
 
 if __name__ == '__main__':
     app.run(debug=True)
