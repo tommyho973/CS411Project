@@ -327,7 +327,13 @@
   <button onclick="fetchFlashcard()">Get Flashcard</button>
 
   <!-- Container to display flashcard -->
-  <div id="flashcard" class="flashcard"></div>
+  <div id="flashcard" class="flashcard">
+    <app-card></app-card>
+  </div>
+
+  <div id="word-list">
+    <app-word-list></app-word-list>
+  </div>
 
   <script>
     // Function to fetch flashcard data from the Flask backend
