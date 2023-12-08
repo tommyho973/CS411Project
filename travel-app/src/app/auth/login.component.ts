@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
         .then(() => {
           // Handle successful login, e.g., navigate to a different page
           console.log("Success");
-          this.router.navigate(['/account']);
+          this.router.navigate(['/app']);
         })
         .catch(error => {
           // Handle login error (display error message, etc.)

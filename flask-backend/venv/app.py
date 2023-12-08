@@ -8,6 +8,9 @@ from dotenv import load_dotenv
 import os
 from pymongo import MongoClient
 from bson import ObjectId  # Import ObjectId from the `bson` module
+from firedb import *
+
+
 
 load_dotenv("api_keys.env")  # access the env file where we store the private info
 app = Flask(__name__)
@@ -16,7 +19,7 @@ api_key = os.environ.get("GOOGLE_API_KEY")  # key for Google Translate API
 service = build('translate', 'v2', developerKey=api_key)
 
 # Connect to MongoDB
-client = MongoClient('mongodb+srv://senacs411:EBIuHS9jfhcp2nzR@cluster0.mnf9keq.mongodb.net/')
+client = MongoClient('mongodb+srv://senacs411:EBIuHS9jfhcp2nzR@cluster0.mnf9keq.mongodb.net/', tls=False)
 db = client['senacs411']  # name for MongoDB database
 flashcards_collection = db['flashcards']  # Creating a flashcards_collection for flashcards in the database
 users_collection = db['users']
@@ -47,6 +50,8 @@ def translate_text(text, target_language, google_translate_api_key):
 @app.route('/api/word-info', methods=['GET'])  # our api endpoint
 def get_word_info():
     # select a random word from the list
+    email = request.args.get("email")
+    language = request.args.get("language")
     random_word = random.choice(words)
 
     # get the definition from the Dictionary API
@@ -62,7 +67,7 @@ def get_word_info():
     first_definition = definition_data[0]['meanings'][0]['definitions'][0]['definition']
 
     # get the target language for translation from the query string
-    target_language = request.args.get('target', 'es')  # es is espanol, just a placeholder for now, down the line will be according to user preference
+    target_language = request.args.get('target', language)  # es is espanol, just a placeholder for now, down the line will be according to user preference
 
     # translate the word and its definition using the Google Translate API
     google_translate_api_key = api_key
@@ -84,50 +89,44 @@ def get_word_info():
         'translated_word': translated_word,
         'translated_definition': translated_definition
     }
+    currData = retrieveData(email)
+    print(currData)
+    if(currData[0]==""):
+        currData = [flashcard_data]
+    else:
+        currData.append(flashcard_data)
+    replaceData(email,currData)
 
 
-    insert_result = flashcards_collection.insert_one(flashcard_data)
+    #insert_result = flashcards_collection.insert_one(flashcard_data)
 
     # Convert ObjectId to string before returning JSON
-    flashcard_data['_id'] = str(insert_result.inserted_id)
+    #flashcard_data['_id'] = str(insert_result.inserted_id)
 
 
     # Check if the insertion was successful. If t is successful returns flashcard_data in JSON format
-    if insert_result.inserted_id:
-        return jsonify(flashcard_data), 200
-    else:
-        return jsonify({'error': 'Failed to insert flashcard into MongoDB'}), 500
+    #if insert_result.inserted_id:
+    return jsonify(flashcard_data), 200
+    #else:
+        #return jsonify({'error': 'Failed to insert flashcard into MongoDB'}), 500
 
 @app.route("/api/register", methods=["POST"])
-def handle_options():
-    return '', 200, {
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Methods': 'POST',
-    }
 def register_user():
     data = request.json
 
     # Extract user data from the request
-    display_name = data.get("displayName")
+    uid = data.get("uid")
     email = data.get("email")
-    password = data.get("password")
-
+   
     # Perform user registration logic (e.g., create user in MongoDB)
-    user_data = {
-        "displayName": display_name,
-        "email": email,
-        "password": password,  # Note: In a real application, hash the password before storing
-    }
+    addUser(uid,email)
 
+
+    
     # Insert user data into MongoDB
-    result = users_collection.insert_one(user_data)
 
     # Return a response based on the registration result
-    if result.inserted_id:
-        return jsonify({"message": "User registered successfully"}), 200
-    else:
-        return jsonify({"error": "Failed to register user"}), 500
+    return jsonify({"message": "User registered successfully"}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)

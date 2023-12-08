@@ -20,10 +20,9 @@ import { Router } from '@angular/router';
             if (user) {
               // User is defined, proceed with extracting information
               const uid = user.uid;
-              const displayName = user.displayName || ''; // Use an empty string if displayName is undefined
               const email = user.email || ''; // Use an empty string if email is undefined
-      
-              this.authService.sendUserInfoToMongoDB(uid, displayName, email)
+                console.log(user.email);
+              this.authService.sendUserInfoToMongoDB(uid, email)
                 .subscribe(
                   (response) => {
                     console.log('User registered and information sent to MongoDB:', response);

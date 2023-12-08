@@ -23,6 +23,7 @@ import { WordListComponent } from './components/word-list/word-list.component';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAA9BqT2s9cE8ExpBeXNhb7rfexg2i-rNw",
@@ -56,7 +57,8 @@ const firebaseConfig = {
     FormsModule,
     AngularFireAuthModule,
     MatCardModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule,
   ],
   providers: [
     AuthService,

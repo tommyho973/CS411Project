@@ -334,9 +334,8 @@
 <body>
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
-
   <!-- <h1>Flashcard App</h1> -->
-
+  <div *ngIf="isLoggedIn; else notLoggedInContent">
   <div id="selection-menu">
     <!-- Input for desired language -->
     <div id="language-selection">
@@ -349,7 +348,7 @@
     </div>
     <button class="menu-items" (click)="navigateToRegistration()">Go to Registration</button>
     <!-- Button to trigger fetching flashcard data -->
-    <button class="menu-items" onclick="fetchFlashcard()">Create Flashcard</button>
+    <button class="menu-items" (click)="fetchFlashcard()">Create Flashcard</button>
   </div>
 
   <!-- Container to display flashcard -->
@@ -360,55 +359,11 @@
   <div id="word-list">
     <app-word-list></app-word-list>
   </div>
+  </div>
+  <ng-template #notLoggedInContent>
+    <p>Login to access this content</p>
+  </ng-template>
 
-  <script>
-    // Function to fetch flashcard data from the Flask backend
-    function fetchFlashcard() {
-      // Get the selected language from the dropdown
-      const selectedLanguage = document.getElementById('language').value;
-
-      // Make a request to your Flask backend to get flashcard data
-      // Replace the URL with the actual URL where your Flask app is running
-      fetch(`http://localhost:5000/api/word-info?target=${selectedLanguage}`)
-        .then(response => response.json())
-        .then(data => {
-          // Display flashcard data in the HTML
-          showFlashcard(data);
-        })
-        .catch(error => console.error('Error fetching flashcard data:', error));
-    }
-
-    // Function to display flashcard data in the HTML
-    function showFlashcard(data) {
-      const flashcardContainer = document.getElementById('flashcard');
-
-      // Check if there is data to display
-      if (data) {
-        // Clear previous content in the flashcard container
-        
-        // Create and append flashcard content
-        const originalWord = document.createElement('div');
-        originalWord.innerText = `Original Word: ${data.original_word}`;
-
-        const originalDefinition = document.createElement('div');
-        originalDefinition.innerText = `Original Definition: ${data.original_definition}`;
-
-        const translatedWord = document.createElement('div');
-        translatedWord.innerText = `Translated Word: ${data.translated_word}`;
-
-        const translatedDefinition = document.createElement('div');
-        translatedDefinition.innerText = `Translated Definition: ${data.translated_definition}`;
-
-        flashcardContainer.appendChild(originalWord);
-        flashcardContainer.appendChild(originalDefinition);
-        flashcardContainer.appendChild(translatedWord);
-        flashcardContainer.appendChild(translatedDefinition);
-      } else {
-        // Display a message if there is no data
-        flashcardContainer.innerHTML = 'No flashcard data available.';
-      }
-    }
-  </script>
 
 </body>
 
@@ -420,4 +375,3 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet></router-outlet>
