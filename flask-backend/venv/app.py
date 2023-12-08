@@ -11,7 +11,6 @@ from bson import ObjectId  # Import ObjectId from the `bson` module
 
 load_dotenv("api_keys.env")  # access the env file where we store the private info
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:4200"}})
 api_key = os.environ.get("GOOGLE_API_KEY")  # key for Google Translate API
 service = build('translate', 'v2', developerKey=api_key)
 
@@ -45,10 +44,12 @@ def translate_text(text, target_language, google_translate_api_key):
 
 
 @app.route('/api/word-info', methods=['GET'])  # our api endpoint
-def get_word_info(user_id=None):
+def get_word_info():
     # select a random word from the list
     random_word = random.choice(words)
 
+    user_id = request.args.get('user_id', 'null')
+    
     # get the definition from the Dictionary API
     dict_api_url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{random_word}"
     definition_response = requests.get(dict_api_url)
@@ -100,13 +101,6 @@ def get_word_info(user_id=None):
         return jsonify({'error': 'Failed to insert flashcard into MongoDB'}), 500
 
 @app.route("/api/register", methods=["POST"])
-def handle_options():
-    return '', 200, {
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Methods': 'POST',
-    }
-    
 def register_user():
     data = request.json
 
@@ -120,11 +114,11 @@ def register_user():
         "displayName": display_name,
         "email": email,
         "password": password,  # Note: In a real application, hash the password before storing
-        "flashcards": []  # An empty array for flashcard references
+        "user_flashcards": []  # An empty array for flashcard references
     }
 
     # Insert user data into MongoDB
-    result = users_collection.insert_one(user_data) 
+    result = users_collection.insert_one(user_data)
 
     # Return a response based on the registration result
     if result.inserted_id:
@@ -134,12 +128,29 @@ def register_user():
         return jsonify({"error": "Failed to register user"}), 500
 
 
-#Function to retrieve all flashcards for a specific user    
+# Function to retrieve all flashcards for a specific user
 def get_user_flashcards(user_id):
-    flashcards = flashcards_collection.find({'user_id': user_id})
-    return list(flashcards)
+    if user_id.lower() == 'null':
+        flashcards = flashcards_collection.find({'user_id': {'$exists': False}})
+    else:
+        flashcards = flashcards_collection.find({'user_id': user_id})
 
-#Endpoint to retrieve all flashcards for a user
+    flashcard_list = []
+    for flashcard in flashcards:
+        flashcard_data = {
+            'user_id': user_id if user_id.lower() != 'null' else None,  # Include user_id in the response
+            'original_word': flashcard['original_word'],
+            'original_definition': flashcard['original_definition'],
+            'translated_word': flashcard['translated_word'],
+            'translated_definition': flashcard['translated_definition'],
+            '_id': str(flashcard['_id'])  # Convert ObjectId to string
+        }
+        flashcard_list.append(flashcard_data)
+
+    return flashcard_list
+
+
+# Endpoint to retrieve all flashcards for a user
 @app.route('/api/user-flashcards/<user_id>', methods=['GET'])
 def get_user_flashcards_endpoint(user_id):
     user_flashcards = get_user_flashcards(user_id)
