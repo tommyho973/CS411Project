@@ -24,6 +24,7 @@ import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
+import { CreateYourOwnFlashcardComponent } from './create-your-own-flashcard/create-your-own-flashcard.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAA9BqT2s9cE8ExpBeXNhb7rfexg2i-rNw",
@@ -44,7 +45,8 @@ const firebaseConfig = {
     AccountComponent,
     CardComponent,
     WordListComponent,
-    NavbarComponent
+    NavbarComponent,
+    CreateYourOwnFlashcardComponent
   ],
   imports: [
     HttpClientModule,

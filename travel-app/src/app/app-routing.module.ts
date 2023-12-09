@@ -6,6 +6,8 @@ import {AppComponent} from './app.component';
 import { LogoutComponent } from './auth/logout.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AccountComponent } from './auth/account.component';
+import { CreateYourOwnFlashcardComponent } from './create-your-own-flashcard/create-your-own-flashcard.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' }, 
@@ -13,7 +15,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'app', component: AppComponent,canActivate:[AuthGuard] },
   { path: 'logout', component: LogoutComponent },
-  { path: 'account', component: AccountComponent }];
+  { path: 'account', component: AccountComponent },
+  { path: 'create-your-own-flashcard', component: CreateYourOwnFlashcardComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

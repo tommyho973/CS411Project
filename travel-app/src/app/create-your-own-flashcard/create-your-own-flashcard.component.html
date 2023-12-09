@@ -1,0 +1,24 @@
+<div class="flashcard-form">
+    <div class="input-row">
+      <label>English Word:</label>
+      <input type="text" [(ngModel)]="englishWord" placeholder="Enter English Word">
+    </div>
+  
+    <div class="input-row">
+      <label>English Translation:</label>
+      <input type="text" [(ngModel)]="englishTranslation" placeholder="Enter English Translation">
+    </div>
+  
+    <div class="input-row">
+      <label>Translated Word:</label>
+      <input type="text" [(ngModel)]="translatedWord" placeholder="Enter Translated Word">
+    </div>
+  
+    <div class="input-row">
+      <label>Translated Definition:</label>
+      <input type="text" [(ngModel)]="translatedDefinition" placeholder="Enter Translated Definition">
+    </div>
+  
+    <button (click)="submitFlashcard()">Add Flashcard</button>
+  </div>
+  
