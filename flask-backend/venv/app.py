@@ -110,7 +110,7 @@ def get_word_info():
     #else:
         #return jsonify({'error': 'Failed to insert flashcard into MongoDB'}), 500
 @app.route('/api/flashcard-list', methods=['GET'])  # our api endpoint
-def get_word_info():
+def get_word_list():
     # select a random word from the list
     email = request.args.get("email")
     
@@ -118,7 +118,7 @@ def get_word_info():
     return jsonify(result = currData), 200
 
 @app.route('/api/add-to-list', methods=['GET'])  # our api endpoint
-def get_word_info():
+def add_to_list():
     # select a random word from the list
     email = request.args.get("email")
     data = request.args.get("data")
