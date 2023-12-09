@@ -157,5 +157,35 @@ def get_user_flashcards_endpoint(user_id):
     return jsonify(user_flashcards), 200
 
 
+# Endpoint to retrieve all flashcards for a user
+@app.route('/api/create-flashcard', methods=['POST'])
+def create_flashcard():
+    data = request.json
+
+    # Extract flashcard details from the request
+    user_id = data.get('user_id', None)  # Use None as the default value if 'user_id' is not present
+    original_word = data.get('original_word')
+    original_definition = data.get('original_definition')
+    translated_word = data.get('translated_word')
+    translated_definition = data.get('translated_definition')
+
+    # Validate and store flashcard in the collection
+    flashcard_data = {
+        'user_id': user_id,
+        'original_word': original_word,
+        'original_definition': original_definition,
+        'translated_word': translated_word,
+        'translated_definition': translated_definition
+    }
+
+    insert_result = flashcards_collection.insert_one(flashcard_data)
+
+    if insert_result.inserted_id:
+        # Convert ObjectId to string before returning JSON
+        flashcard_data['_id'] = str(insert_result.inserted_id)
+        return jsonify(flashcard_data), 200
+    else:
+        return jsonify({'error': 'Failed to insert flashcard into MongoDB'}), 500
+
 if __name__ == '__main__':
     app.run(debug=True)
