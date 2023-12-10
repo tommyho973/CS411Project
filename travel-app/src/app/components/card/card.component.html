@@ -17,11 +17,10 @@
         <h1 *ngIf="showTranslatedWord">{{ translatedWord }}</h1>
       </div>
     </mat-card-content>
-
+  
     <mat-card-actions>
       <button mat-button (click)="toggleBoth()">FLIP</button>
       <button mat-button (click)="displayPreviousFlashcard()">PREVIOUS</button>
-    </mat-card-actions>    
-
-</mat-card>
-  
+      <button mat-button (click)="displayLastFlashcard()">UPDATE</button>
+    </mat-card-actions>
+  </mat-card>

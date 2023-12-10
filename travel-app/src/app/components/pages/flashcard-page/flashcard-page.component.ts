@@ -36,6 +36,7 @@ export class FlashcardPageComponent {
       })
       .catch(error => console.error('Error fetching flashcard data:', error));
   }
+
   showFlashcard(data: { original_word: string, original_definition: string, translated_word: string, translated_definition: string }) {
     const flashcardContainer = document.getElementById('flashcard');
   
@@ -67,6 +68,7 @@ export class FlashcardPageComponent {
       console.error('No data or flashcardContainer is null.');
     }
   }
+  
   getFlashcardData(){
     if(this.userUid!=null){
       const url = `http://localhost:5000/api/flashcard-list?email=${this.userUid}`;
