@@ -26,6 +26,10 @@
     margin: 8px 0;
   }
 
+  body {
+    background-color: #EEEEEE;
+  }
+
   p {
     margin: 0;
   }
@@ -299,6 +303,10 @@
       width: 700px;
       text-align: center;
     }
+
+    #log-in-display-message {
+      text-align: center;
+    }
  
 
   /* Responsive Styles */
@@ -334,34 +342,13 @@
 <body>
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
+
   <!-- <h1>Flashcard App</h1> -->
   <div *ngIf="isLoggedIn; else notLoggedInContent">
-  <div id="selection-menu">
-    <!-- Input for desired language -->
-    <div id="language-selection">
-      <label class="menu-items" for="language" style="margin-right: 1vw;">Select Language:</label>
-      <select class="menu-items" id="language">
-        <option value="en">English</option>
-        <option value="es">Spanish</option>
-        <!-- Add more language options as needed -->
-      </select>
-    </div>
-    <button class="menu-items" (click)="navigateToRegistration()">Go to Registration</button>
-    <!-- Button to trigger fetching flashcard data -->
-    <button class="menu-items" (click)="fetchFlashcard()">Create Flashcard</button>
-  </div>
-
-  <!-- Container to display flashcard -->
-  <div id="flashcard" class="flashcard">
-    <app-card></app-card>
-  </div>
-
-  <div id="word-list">
-    <app-word-list></app-word-list>
-  </div>
+    <!-- <app-flashcard-page></app-flashcard-page> -->
   </div>
   <ng-template #notLoggedInContent>
-    <p>Login to access this content</p>
+    <p id="log-in-display-message">Login to access this content</p>
   </ng-template>
 
 

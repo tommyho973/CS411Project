@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,16 +8,14 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(public authService: AuthService) {}
+  isLoggedIn$ = this.authService.isLoggedIn$;
 
-  isLoggedIn(): boolean {
-    // function will check if the user is logged in currently
-    // return this.authService.isLoggedIn();
-    return true;
-  }
+  constructor(public authService: AuthService, private router: Router) {}
 
   logout(): void {
     // function to log out user
-    // this.authService.logout();
+    this.authService.logout().then(() => {
+      this.router.navigate(['/login']); // Navigate to login after logout
+    });
   }
 }

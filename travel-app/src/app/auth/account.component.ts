@@ -3,15 +3,18 @@ import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-account',
+  styleUrls: ['./account.component.css'],
   template: `
-    <div *ngIf="authService.user$ | async as user">
-      <h2>Account Information</h2>
-      <p>Email: {{ user.email }}</p>
+    <div class="container" *ngIf="authService.user$ | async as user">
+      <div id="desc">
+        <h2>Account Information</h2>
+        <p>Email: {{ user.email }}</p>
+      </div>
       <button (click)="logout()">Logout</button>
     </div>
-    <div *ngIf="!(authService.user$ | async)">
+    <!-- <div *ngIf="!(authService.user$ | async)">
       <p>Please log in or register.</p>
-    </div>
+    </div> -->
   `,
 })
 export class AccountComponent {
