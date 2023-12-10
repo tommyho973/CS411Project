@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import { LogoutComponent } from './auth/logout.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AccountComponent } from './auth/account.component';
+import { CreateYourOwnFlashcardComponent } from './create-your-own-flashcard/create-your-own-flashcard.component';
 import { FlashcardPageComponent } from './components/pages/flashcard-page/flashcard-page.component';
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'home', component: FlashcardPageComponent,canActivate:[AuthGuard] },
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountComponent },
+  { path: 'create-your-own-flashcard', component: CreateYourOwnFlashcardComponent },
   { path: 'app', component: FlashcardPageComponent },
 ];
 
