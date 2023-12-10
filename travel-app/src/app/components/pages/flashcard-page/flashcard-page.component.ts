@@ -10,7 +10,7 @@ import { AuthService } from '../../../auth/auth.service';
 export class FlashcardPageComponent {
   userUid: string | null = null;
   flashcardList: any[] = [];
-  constructor(private router: Router,public authService: AuthService) {
+  constructor(private router: Router, public authService: AuthService) {
     authService.user$.subscribe((user) => {
       this.userUid = user ? user.uid : null;
     });
@@ -79,6 +79,7 @@ export class FlashcardPageComponent {
     .catch((error) =>
       console.error('Error fetching flashcard data:', error)
     );
+
   }
   }
 }
