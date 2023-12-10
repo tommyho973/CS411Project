@@ -17,6 +17,10 @@ export class FlashcardPageComponent {
     this.router.navigate(['/register']);
   }
 
+  navigateToCreateYourOwn(){
+    this.router.navigate(['/create-your-own-flashcard']);
+  }
+
   fetchFlashcard() {
     const selectedLanguage = (document.getElementById('language') as HTMLInputElement)?.value;
     const url = `http://localhost:5000/api/word-info?email=${this.userUid}&language=${selectedLanguage}`;
