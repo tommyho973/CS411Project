@@ -60,6 +60,14 @@ export class AuthService {
       const params = {"email":email, "language":language,};
       return this.http.get('http://127.0.0.1:5000/api/word-info', { params });
     }
+    addWordtoDatabase(uid: string, data: any){
+      const user = {uid,data};
+      return this.http.post('http://127.0.0.1:5000/api/add-to-list', user);
+    }
+    getFlashcardList(email:string){
+      const params = {"email":email};
+      return this.http.get('http://127.0.0.1:5000/api/flashcard-list', { params });
+    }
     logout(): Promise<void> {
       return this.afAuth.signOut().then(() => {
         this.isLoggedInSubject.next(false);
