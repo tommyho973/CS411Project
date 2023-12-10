@@ -26,11 +26,11 @@ body{
 
 #form-header {
   background-color: black;
-  display: inline-block; /* Add this line */
-  padding: 5px 0px; /* Adjust padding as needed */
-  text-align: center;
+  width: 50%;
   color: white;
+  text-align: center;
   text-transform: uppercase;
+  border-radius: 3px;
   margin-top: 1.5vh;
   margin-bottom: 2vh;
   margin-left: 1.5vh;
