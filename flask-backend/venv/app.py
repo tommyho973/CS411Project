@@ -117,11 +117,12 @@ def get_word_list():
     currData = retrieveData(email)
     return jsonify(result = currData), 200
 
-@app.route('/api/add-to-list', methods=['GET'])  # our api endpoint
+@app.route('/api/add-to-list', methods=['POST'])  # our api endpoint
 def add_to_list():
     # select a random word from the list
-    email = request.args.get("email")
-    data = request.args.get("data")
+    sentdata = request.json
+    email = sentdata.get("uid")
+    data = data.get("data")
 
     currData = retrieveData(email)
     if(currData[0]==""):
