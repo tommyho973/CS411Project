@@ -27,10 +27,10 @@ export class CreateYourOwnFlashcardComponent {
     this.translatedWord = (document.getElementById('translatedWord') as HTMLInputElement)?.value;
     this.translatedDefinition = (document.getElementById('translatedDefinition') as HTMLInputElement)?.value;
     const data = {
-      englishWord: this.englishWord,
-      englishTranslation: this.englishTranslation,
-      translatedWord: this.translatedWord,
-      translatedDefinition: this.translatedDefinition,
+      original_definition: this.englishTranslation,
+      original_word: this.englishWord,
+      translated_definition: this.translatedDefinition,
+      translated_word: this.translatedWord,
     };
     if(this.userUid!=null){
       this.authService.addWordtoDatabase(this.userUid,data)
