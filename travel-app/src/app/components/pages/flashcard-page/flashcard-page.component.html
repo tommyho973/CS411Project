@@ -20,6 +20,16 @@
     p {
       margin: 0;
     }
+
+    body{
+      background-color: #215e56;
+      background: linear-gradient(to right, #e2e2e2, #215e56);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 200wh;
+    }
   
     .content {
       display: flex;
@@ -138,6 +148,7 @@
    
     /* Basic styling for the flashcard */
     .flashcard {
+        background-color: #fff;
         border: 1px solid #232026;
         border-radius: 10px;
         padding: 50px;
@@ -171,15 +182,14 @@
     }
 </style>
 
-<div id="selection-menu">
+<body>
+  <div id="selection-menu">
     <!-- Input for desired language -->
     <div id="language-selection">
       <label class="menu-items" for="language" style="margin-right: 1vw;">Select Language:</label>
       <select class="menu-items" id="language">
         <option value="en">English</option>
         <option value="es">Spanish</option>
-        <option value="fr">French</option>
-        <option value="tr">Turkish</option>
         <!-- Add more language options as needed -->
       </select>
     </div>
@@ -189,14 +199,23 @@
     <button class="menu-items" (click)="fetchFlashcard()">Generate Flashcard Randomly</button>
     <!-- Button for user to create their own flashcard-->
     <button class="menu-items" (click)="navigateToCreateYourOwn()">Create Flashcard</button>
-    <button class="menu-items" (click)="getFlashcardData()">Checks flashcard data</button>
-</div>
-
+  </div>
+  
 <!-- Container to display flashcard -->
 <!-- <div id="flashcard" class="flashcard">
     <app-card></app-card>
 </div> -->
 
-<div id="word-list">
+  <style>
+    #word-list {
+      max-height: 400px; 
+      overflow: auto;   /* Enables scrolling if the content overflows the container */
+    }
+  </style>
+  
+  <div id="word-list">
     <app-word-list></app-word-list>
-</div>
+  </div>
+  
+  
+</body>

@@ -26,4 +26,16 @@ import { Router } from '@angular/router';
           console.error('Login error:', error.message);
         });
     }
+    signInWithGoogle(){
+      this.authService.signInWithGoogle()
+      .then(() => {
+        // Handle successful login, e.g., navigate to a different page
+        console.log("Success");
+        this.router.navigate(['/home']);
+      })
+      .catch(error => {
+        // Handle login error (display error message, etc.)
+        console.error('Login error:', error.message);
+      });
+    }
   }
