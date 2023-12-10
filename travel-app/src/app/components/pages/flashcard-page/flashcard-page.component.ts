@@ -50,15 +50,49 @@ export class FlashcardPageComponent {
       // Create and append flashcard content
       const originalWord = document.createElement('div');
       originalWord.innerText = `Original Word: ${data.original_word}`;
+      originalWord.className = 'original-word';
+      originalWord.style.backgroundColor="black";
+      originalWord.style.color="white";
+      originalWord.style.width="50%";
+      originalWord.style.textAlign="center";
+      originalWord.style.marginLeft="auto";
+      originalWord.style.marginRight="auto";
+      originalWord.style.fontSize="calc(10px + 2vh)";
+      originalWord.style.fontWeight="bold";
+      originalWord.style.padding="2vh 1vw";
   
       const originalDefinition = document.createElement('div');
+      originalDefinition.className = 'original-def';
       originalDefinition.innerText = `Original Definition: ${data.original_definition}`;
-  
+      originalDefinition.style.marginBottom="5vh";
+      originalDefinition.style.width="50%";
+      originalDefinition.style.textAlign="justify";
+      originalDefinition.style.marginLeft="auto";
+      originalDefinition.style.marginRight="auto";
+      originalDefinition.style.marginTop="2vh";
+
       const translatedWord = document.createElement('div');
+      translatedWord.className = 'translated-word';
       translatedWord.innerText = `Translated Word: ${data.translated_word}`;
+      translatedWord.style.backgroundColor="black";
+      translatedWord.style.color="white";
+      translatedWord.style.width="50%";
+      translatedWord.style.textAlign="center";
+      translatedWord.style.marginLeft="auto";
+      translatedWord.style.marginRight="auto";
+      translatedWord.style.fontSize="calc(10px + 2vh)";
+      translatedWord.style.fontWeight="bold";
+      translatedWord.style.padding="2vh 1vw";
   
       const translatedDefinition = document.createElement('div');
       translatedDefinition.innerText = `Translated Definition: ${data.translated_definition}`;
+      translatedDefinition.className = 'translated-def';
+      translatedDefinition.innerText = `Original Definition: ${data.original_definition}`;
+      translatedDefinition.style.width="50%";
+      translatedDefinition.style.textAlign="justify";
+      translatedDefinition.style.marginLeft="auto";
+      translatedDefinition.style.marginRight="auto";
+      translatedDefinition.style.marginTop="2vh";
   
       flashcardContainer.appendChild(originalWord);
       flashcardContainer.appendChild(originalDefinition);
