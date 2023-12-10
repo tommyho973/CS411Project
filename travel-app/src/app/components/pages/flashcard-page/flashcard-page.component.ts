@@ -41,8 +41,12 @@ export class FlashcardPageComponent {
     const flashcardContainer = document.getElementById('flashcard');
   
     // Check if there is data to display
-    if (data && flashcardContainer!==null) {
+    if (data && flashcardContainer !== null) {
       // Clear previous content in the flashcard container
+      while (flashcardContainer.firstChild) {
+        flashcardContainer.removeChild(flashcardContainer.firstChild);
+      }
+  
       // Create and append flashcard content
       const originalWord = document.createElement('div');
       originalWord.innerText = `Original Word: ${data.original_word}`;
@@ -60,14 +64,14 @@ export class FlashcardPageComponent {
       flashcardContainer.appendChild(originalDefinition);
       flashcardContainer.appendChild(translatedWord);
       flashcardContainer.appendChild(translatedDefinition);
-    } else if(flashcardContainer !== null) {
+    } else if (flashcardContainer !== null) {
       // Display a message if there is no data
       flashcardContainer.innerHTML = 'No flashcard data available.';
-    }
-    else{
+    } else {
       console.error('No data or flashcardContainer is null.');
     }
   }
+  
   
   getFlashcardData(){
     if(this.userUid!=null){
