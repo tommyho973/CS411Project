@@ -10,7 +10,11 @@ import { AuthService } from '../../../auth/auth.service';
 export class FlashcardPageComponent {
   userUid: string | null = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,public authService: AuthService) {
+    authService.user$.subscribe((user) => {
+      this.userUid = user ? user.uid : null;
+    });
+  }
   
   // Method to navigate to the registration component
   navigateToRegistration() {
