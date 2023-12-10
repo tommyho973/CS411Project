@@ -69,7 +69,6 @@
     }
   
     .card.card-small {
-      background-color: #fff;
       height: 16px;
       width: 168px;
     }
@@ -207,8 +206,16 @@
       <app-card></app-card>
   </div>
 
+  <style>
+    #word-list {
+      max-height: 400px; 
+      overflow: auto;   /* Enables scrolling if the content overflows the container */
+    }
+  </style>
+  
   <div id="word-list">
-      <app-word-list></app-word-list>
+    <app-word-list></app-word-list>
   </div>
+  
   
 </body>
