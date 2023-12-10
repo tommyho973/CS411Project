@@ -1,29 +1,42 @@
 /* login.component.css */
 
 /* Custom styles for the login page */
+body{
+  background-color: #215e56;
+  background: linear-gradient(to right, #e2e2e2, #215e56);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 200wh;
+}
+
 .container {
-  max-width: 400px;
+  max-width: 500px; 
+  padding: 50px 160px;
+  background-color: #fff;
   margin: auto;
-  margin-top: 20vh !important;
-  margin-bottom: 5vh;
-  padding: 20px;
+  margin-top: 10vh !important;
+  margin-bottom: 10vh;
   border: 1px solid #ccc;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+
 #form-header {
   background-color: black;
-  width: 25%;
+  display: inline-block; /* Add this line */
+  padding: 5px 0px; /* Adjust padding as needed */
   text-align: center;
   color: white;
   text-transform: uppercase;
   margin-top: 1.5vh;
   margin-bottom: 2vh;
   margin-left: 1.5vh;
-  padding-left: 10px;
-  padding-right: 10px;
 }
+
+
 
 .form-group {
   margin-bottom: 20px;
@@ -35,7 +48,7 @@
 }
 
 label {
-  width: 90%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0.5vh;

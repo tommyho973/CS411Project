@@ -3,8 +3,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #b8b8b8;
-    padding: 1.5vh 1vw;
-    margin-bottom: 5vh;
+    padding: 1.5vh 1vw; 
 }
   
 .navbar .nav {
