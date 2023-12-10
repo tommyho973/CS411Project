@@ -5,6 +5,7 @@ import { BehaviorSubject,Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 
 @Injectable({
@@ -59,6 +60,14 @@ export class AuthService {
     getNewWord(email: string, language: string){
       const params = {"email":email, "language":language,};
       return this.http.get('http://127.0.0.1:5000/api/word-info', { params });
+    }
+    async signInWithGoogle() {
+      const provider = new GoogleAuthProvider(); // Use GoogleAuthProvider directly
+      try {
+        await this.afAuth.signInWithPopup(provider);
+      } catch (error) {
+        console.error('Google sign-in error', error);
+      }
     }
     addWordtoDatabase(uid: string, data: any){
       const user = {uid,data};
