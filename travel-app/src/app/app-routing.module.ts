@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountComponent },
   { path: 'create-your-own-flashcard', component: CreateYourOwnFlashcardComponent },
-  { path: 'app', component: FlashcardPageComponent },
+  // { path: 'app', component: FlashcardPageComponent },
 ];
 
 @NgModule({
