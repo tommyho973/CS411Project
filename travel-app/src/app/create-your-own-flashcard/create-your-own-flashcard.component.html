@@ -2,24 +2,24 @@
   <div class="container" id="container">
     <div class="flashcard-form">
       <form>
-        <div class="input-row">
+        <div class="input-row" >
           <label>English Word:</label>
-          <input type="text" [(ngModel)]="englishWord" placeholder="Enter English Word">
+          <input type="text" id = "englishWord" name = "englishWord" [(ngModel)]="englishWord" placeholder="Enter English Word">
         </div>
       
-        <div class="input-row">
-          <label>English Definition:</label>
-          <input type="text" [(ngModel)]="englishTranslation" placeholder="Enter English Translation">
+        <div class="input-row" >
+          <label>English Translation:</label>
+          <input type="text" id = "englishDefinition" name = "englishDefinition" [(ngModel)]="englishTranslation" placeholder="Enter English Translation">
         </div>
       
         <div class="input-row">
           <label>Translated Word:</label>
-          <input type="text" [(ngModel)]="translatedWord" placeholder="Enter Translated Word">
+          <input type="text" id = "translatedWord" name = "translatedWord" [(ngModel)]="translatedWord" placeholder="Enter Translated Word">
         </div>
       
         <div class="input-row">
           <label>Translated Definition:</label>
-          <input type="text" [(ngModel)]="translatedDefinition" placeholder="Enter Translated Definition">
+          <input type="text" id = "translatedDefinition" name = "translatedDefinition" [(ngModel)]="translatedDefinition" placeholder="Enter Translated Definition">
         </div>
       
         <button (click)="submitFlashcard()">Add Flashcard</button>
