@@ -17,7 +17,7 @@ export class AuthService {
     private apiUrl = 'http://127.0.0.1:5000';
     user$: Observable<firebase.default.User | null>;
   
-    constructor(private afAuth: AngularFireAuth, private http: HttpClient, private router: Router) {
+    constructor(public afAuth: AngularFireAuth, private http: HttpClient, private router: Router) {
       this.user$ = this.afAuth.authState;
       this.afAuth.authState.subscribe((user) => {
         this.isLoggedInSubject.next(!!user);
