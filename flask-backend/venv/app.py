@@ -122,7 +122,7 @@ def add_to_list():
     # select a random word from the list
     sentdata = request.json
     email = sentdata.get("uid")
-    data = data.get("data")
+    data = sentdata.get("data")
 
     currData = retrieveData(email)
     if(currData[0]==""):

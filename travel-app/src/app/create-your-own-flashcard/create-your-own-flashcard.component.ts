@@ -26,13 +26,24 @@ export class CreateYourOwnFlashcardComponent {
     this.englishTranslation = (document.getElementById('englishDefinition') as HTMLInputElement)?.value;
     this.translatedWord = (document.getElementById('translatedWord') as HTMLInputElement)?.value;
     this.translatedDefinition = (document.getElementById('translatedDefinition') as HTMLInputElement)?.value;
-    console.log('Submitted Flashcard:', {
+    const data = {
       englishWord: this.englishWord,
       englishTranslation: this.englishTranslation,
       translatedWord: this.translatedWord,
       translatedDefinition: this.translatedDefinition,
-    });
+    };
+    if(this.userUid!=null){
+      this.authService.addWordtoDatabase(this.userUid,data)
+                .subscribe(
+                  (response) => {
+                    console.log('Info sent to database:', response);
+                  },
+                  (error) => {
+                    console.error('Failed to send user information to MongoDB:', error);
+                  }
+                );
     
   }
+}
 
 }

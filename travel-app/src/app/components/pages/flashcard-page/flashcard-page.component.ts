@@ -9,8 +9,8 @@ import { AuthService } from '../../../auth/auth.service';
 })
 export class FlashcardPageComponent {
   userUid: string | null = null;
-
-  constructor(private router: Router,public authService: AuthService) {
+  flashcardList: any[] = [];
+  constructor(private router: Router, public authService: AuthService) {
     authService.user$.subscribe((user) => {
       this.userUid = user ? user.uid : null;
     });
@@ -42,7 +42,6 @@ export class FlashcardPageComponent {
     // Check if there is data to display
     if (data && flashcardContainer!==null) {
       // Clear previous content in the flashcard container
-  
       // Create and append flashcard content
       const originalWord = document.createElement('div');
       originalWord.innerText = `Original Word: ${data.original_word}`;
@@ -67,5 +66,20 @@ export class FlashcardPageComponent {
     else{
       console.error('No data or flashcardContainer is null.');
     }
+  }
+  getFlashcardData(){
+    if(this.userUid!=null){
+      const url = `http://localhost:5000/api/flashcard-list?email=${this.userUid}`;
+      fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+      this.flashcardList = data.result; // Assuming the array is nested under 'result'
+      console.log(this.flashcardList);
+    })
+    .catch((error) =>
+      console.error('Error fetching flashcard data:', error)
+    );
+
+  }
   }
 }
