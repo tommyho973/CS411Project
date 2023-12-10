@@ -1,35 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  background-color: #215e56;
+  background: linear-gradient(to right, #e2e2e2, #215e56);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100wh;
+}
+
+.container{
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.35) ;
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+
+}
+
+.container p{
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  margin: 20px 0;
+}
+
+.container span{
+  font-size: 12px;
+}
+
+.container a{
+  color: #333;
+  font-size: 13px;
+  text-decoration: none;
+  margin: 15px 0 10 px;
+}
+
+.container button{
+  background-color: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.container button.hidden{
+  background-color: transparent;
+  border-color: #fff;
+}
+
+.container form{
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 10px;
+  height: 100%;
+}
+
+.container input{
+  background-color: #eee;
+  border: none;
+  margin: 8px 0;
+  padding: 10px 150px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+}
+
 .flashcard-form {
-    max-width: 600px;
-    margin: 20px auto;
-  }
-  
-  .input-row {
-    margin-bottom: 16px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  button {
-    background-color: #1976d2;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #125699;
-  }
-  
+  max-width: 600px;
+  margin: 15px auto;
+}
+
+.input-row {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
