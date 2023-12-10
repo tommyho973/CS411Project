@@ -1,20 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from '../../../auth/auth.service';
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-flashcard-page',
+  templateUrl: './flashcard-page.component.html',
+  styleUrls: ['./flashcard-page.component.css']
 })
-export class AppComponent implements OnInit {
+export class FlashcardPageComponent {
   userUid: string | null = null;
-  isLoggedIn: boolean = false;
-  title = 'flashcard-app';
-  constructor(private router: Router,public authService: AuthService) {
-    authService.user$.subscribe((user) => {
-      this.userUid = user ? user.uid : null;
-    });
-  }
+
+  constructor(private router: Router) {}
   
   // Method to navigate to the registration component
   navigateToRegistration() {
@@ -63,11 +59,5 @@ export class AppComponent implements OnInit {
     else{
       console.error('No data or flashcardContainer is null.');
     }
-  }
-  ngOnInit() {
-    // Call the isLoggedIn method from AuthService
-    this.authService.isUserLoggedIn().subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
-    });
   }
 }

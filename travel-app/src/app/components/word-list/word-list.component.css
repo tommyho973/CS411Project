@@ -11,9 +11,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    margin-bottom: 10px;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+    background-color: #e0e0e0;
+    border: 1px solid #F0ECE5;
     border-radius: 8px;
 }
   
@@ -30,11 +30,11 @@
   
 .term-title {
     font-weight: 600;
-    color: #333;
+    color: #232026; 
 }
   
 .term-description {
-    color: #666;
+    color: #232026; 
     text-align: right;
 }
   

@@ -1,38 +1,80 @@
+/* login.component.css */
+
 /* Custom styles for the login page */
 .container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .input-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  input {
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
+  max-width: 400px;
+  margin: auto;
+  margin-top: 20vh !important;
+  margin-bottom: 5vh;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#form-header {
+  background-color: black;
+  width: 25%;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  margin-top: 1.5vh;
+  margin-bottom: 2vh;
+  margin-left: 1.5vh;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5vh;
+}
+
+input {
+  padding: 10px;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #232323;
+  border-radius: 3px;
+  width: 85%;
+  background-color: #EEEEEE;
+}
+
+button {
+  padding: 10px;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3vh;
+  padding-left: 3vh;
+  padding-right: 3vh;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: rgb(49, 55, 168);
+  transition: 0.3s;
+}
+
+#desc {
+  text-align: center;
+  margin-top: 2vh;
+}

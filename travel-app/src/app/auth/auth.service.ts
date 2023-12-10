@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { BehaviorSubject,Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class AuthService {
     private apiUrl = 'http://127.0.0.1:5000';
     user$: Observable<firebase.default.User | null>;
   
-    constructor(private afAuth: AngularFireAuth,private http: HttpClient) {
+    constructor(private afAuth: AngularFireAuth, private http: HttpClient, private router: Router) {
       this.user$ = this.afAuth.authState;
       this.afAuth.authState.subscribe((user) => {
         this.isLoggedInSubject.next(!!user);
@@ -32,9 +33,20 @@ export class AuthService {
     }
 
     loginWithEmailPassword(email: string, password: string) {
-      const login = this.afAuth.signInWithEmailAndPassword(email, password);
-      this.isLoggedInSubject.next(true);
-      return login
+      return this.afAuth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          this.isLoggedInSubject.next(true);
+          this.router.navigate(['/home']).then(() => {
+            console.error('Navigation to /home successful');
+          }).catch(error => {
+            console.error('Navigation to /home failed:', error);
+          });
+          console.error('Login successful');
+        })
+        .catch(error => {
+          console.error('Login failed:', error);
+          // Handle login failure (e.g., display an error message)
+        });
     }
 
     registerWithEmailPassword(email: string, password: string) {
@@ -48,9 +60,10 @@ export class AuthService {
       const params = {"email":email, "language":language,};
       return this.http.get('http://127.0.0.1:5000/api/word-info', { params });
     }
-    logout() {
-      this.afAuth.signOut();
-      this.isLoggedInSubject.next(false);
+    logout(): Promise<void> {
+      return this.afAuth.signOut().then(() => {
+        this.isLoggedInSubject.next(false);
+      });
     }
 
   }

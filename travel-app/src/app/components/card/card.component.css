@@ -3,7 +3,8 @@
     width: 500px; 
     height: 300px; 
     margin: auto;
-    background-color: #f5f5f5; 
+    background-color: #e0e0e0;
+    color: #232026; 
 }
   
 .mat-mdc-card-header {
@@ -14,7 +15,7 @@
   
 .mat-mdc-card-title {
     font-size: 24px;
-    color: #333; 
+    color: #232026; 
     margin-bottom: 15px;
 }
   

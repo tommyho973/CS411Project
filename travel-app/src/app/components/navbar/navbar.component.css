@@ -4,6 +4,7 @@
     align-items: center;
     border-bottom: 2px solid #b8b8b8;
     padding: 1.5vh 1vw;
+    margin-bottom: 5vh;
 }
   
 .navbar .nav {
@@ -16,6 +17,14 @@
 .navbar-brand {
     margin-left: 5vw;
     font-size: 20px;
+    font-weight: bold;
+    background-color: #232026;;
+    color: #c2c2c2 !important;
+    border: 2px solid #232026;
+    padding-top: 0.75vh;
+    padding-bottom: 0.75vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
 }
   
 .navbar .nav-item {
@@ -28,11 +37,10 @@
 }
 
 .nav-link {
-    border: 2px solid black;
+    border: 2px solid #b8b8b8;
     border-radius: 5px;
     padding: 0.5vh 2vw;
-}
-  
-.navbar .nav-link:hover, .navbar .nav-link.active {
+    margin-left: 1vh;
+    margin-right: 1vh;
 }
   

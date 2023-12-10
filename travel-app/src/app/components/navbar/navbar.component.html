@@ -1,23 +1,18 @@
 <nav class="navbar">
-    <a class="navbar-brand" routerLink="/">Flashcard App</a>
-    
-    <ul class="nav">
-      <li class="nav-item" *ngIf="isLoggedIn()">
-        <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-      </li>
-      <li class="nav-item" *ngIf="!isLoggedIn()">
-        <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
-      </li>
-      <li class="nav-item" *ngIf="!isLoggedIn()">
-        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-      </li>
-      <li class="nav-item" *ngIf="isLoggedIn()">
-        <a class="nav-link" routerLink="/account" routerLinkActive="active">Account</a>
-      </li>
-      <li class="nav-item" *ngIf="isLoggedIn()">
-        <a class="nav-link" href="javascript:;" (click)="logout()">Logout</a>
-      </li>
-    </ul>
-    
-</nav>
+  <a class="navbar-brand" routerLink="/home">Flashcard App</a>
   
+  <ul class="nav">
+    <!-- Show these items only if the user is logged in -->
+    <li class="nav-item" *ngIf="isLoggedIn$ | async">
+      <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a class="nav-link" routerLink="/account" routerLinkActive="active">Account</a>
+      <a class="nav-link" href="javascript:;" (click)="logout()">Logout</a>
+    </li>
+
+    <!-- Show these items only if the user is not logged in -->
+    <li class="nav-item" *ngIf="!(isLoggedIn$ | async)">
+      <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+      <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+    </li>
+  </ul>
+</nav>
